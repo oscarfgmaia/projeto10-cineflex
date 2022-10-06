@@ -11,7 +11,6 @@ export default function HomeScreen() {
         const promise = axios.get(MOVIES_URL)
         promise.then((res)=>{
             setMoviesList(res.data)
-            console.log(res.data)
         })
         promise.catch((err)=>{
             console.log(err)
@@ -28,7 +27,7 @@ export default function HomeScreen() {
             <CenteredDiv>
                 <PostsContainer>
                     <StyledPosterList>
-                        {moviesList.map((movieObj) => <Poster key={movieObj.id} postImg={movieObj.posterURL}/>)}                     
+                        {moviesList.map((movieObj) => <Poster key={movieObj.id} movie={movieObj}/>)}                     
                     </StyledPosterList>
                 </PostsContainer>
             </CenteredDiv>

@@ -2,9 +2,11 @@ import styled from "styled-components"
 
 export default function Header() {
     return (
-        <StyledHeader>
-            <h1>CINEFLEX</h1>
-        </StyledHeader>
+        <>
+            <StyledHeader>
+                <h1>CINEFLEX</h1>
+            </StyledHeader>
+        </>
     )
 }
 
@@ -16,7 +18,7 @@ const StyledHeader = styled.div`
     align-items: center;
     h1{
         color: #E8833A;
-        font-family: 'Roboto';
+        font-family: 'Roboto', sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 34px;

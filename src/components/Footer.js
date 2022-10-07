@@ -13,13 +13,15 @@ export default function Footer({ movie }) {
 }
 
 const StyledFooter = styled.div`
+    background-color: #DFE6ED;
     height:117px;
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
+    z-index: 5;
 `
 const CenteredDiv = styled.div`
     display: flex;

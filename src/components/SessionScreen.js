@@ -23,7 +23,6 @@ export default function SessionScreen() {
     }, [])
 
     if (Object.keys(movie).length === 0) {
-        console.log(movie)
         return (<h1>CARREGANDO</h1>)
     }
     return (

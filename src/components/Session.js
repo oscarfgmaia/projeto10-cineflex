@@ -9,8 +9,8 @@ export default function Session({ session }) {
             <ul>
                 <MovieSessions>
                     {showtimes.map((horario) =>
-                        <Link to={`/assentos/${horario.id}`}>
-                            <li key={horario.id}>
+                        <Link key={horario.id} to={`/assentos/${horario.id}`}>
+                            <li>
                                 <StyledButton>{horario.name}</StyledButton>
                             </li>
                         </Link>

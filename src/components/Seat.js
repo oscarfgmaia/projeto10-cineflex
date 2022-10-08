@@ -1,24 +1,46 @@
-import axios from "axios";
-import { useEffect } from "react";
+
+import { useState } from "react";
 import styled from "styled-components";
 
-export default function Seat({ id, name, isAvailable }) {
+export default function Seat({ id, name, isAvailable, selectedSeats, setSelectedSeats }) {
+    
+    let [seatSelected, setSeatSelected] = useState(false)
+    function isSelected() {
+        if (isAvailable && !seatSelected) {
+            setSeatSelected(!seatSelected)
+            setSelectedSeats([...selectedSeats,id])
+            return
+        }
+        else if(isAvailable){
+            setSeatSelected(!seatSelected)
+            let newArr = [...selectedSeats]
+            newArr = newArr.filter((seat) => seat !== id)
+            setSelectedSeats(newArr)
+            return
+        }
+    }
+
     return (
-        <StyledSeat isAvailable={isAvailable} onClick={()=>alert('clicado')}>
+        <StyledSeat isAvailable={isAvailable} onClick={isSelected} seatSelected={seatSelected} >
             <h1>{name}</h1>
         </StyledSeat>
     )
 }
 
-const StyledSeat = styled.div`
+
+
+export const StyledSeat = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background-color: ${props=>props.isAvailable?'#C3CFD9':'#FBE192'};
-    border: 1px solid ${props=>props.isAvailable?'#808F9D':'#F7C52B'};
+    background-color: ${props => 
+    props.seatSelected ? '#1AAE9E' : props.isAvailable ? '#C3CFD9' : '#FBE192'};
+
+    border: 1px solid ${props => 
+    props.seatSelected ? '#0E7D71' : props.isAvailable ? '#808F9D' : '#F7C52B'};
     margin-bottom: 15px;
     margin-left: 4px;
     margin-right: 4px;

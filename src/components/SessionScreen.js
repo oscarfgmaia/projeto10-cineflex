@@ -20,7 +20,7 @@ export default function SessionScreen() {
         promise.catch((err) => {
             console.log(err)
         })
-    }, [])
+    }, [id])
 
     if (Object.keys(movie).length === 0) {
         return (<h1>CARREGANDO</h1>)
@@ -31,7 +31,7 @@ export default function SessionScreen() {
             <StyledSessionList>
                 {movie.days.map((session) => <Session key={session.id} session={session} />)}
             </StyledSessionList>
-            <Footer movie={movie} />
+            <Footer posterURL={movie.posterURL} title={movie.title} />
         </>
     )
 }

@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-export default function Footer({ movie }) {
-    const { posterURL, title } = movie
+export default function Footer({ posterURL, title, children }) {
     return (
         <StyledFooter>
             <CenteredDiv>
-                <img src={posterURL} alt={title}/>
-                    <h1>{title}</h1>
+                <img src={posterURL} alt={title} />
+                <div>
+                    {title}
+                    {children}
+                </div>
             </CenteredDiv>
         </StyledFooter>
     )
@@ -26,8 +28,16 @@ const StyledFooter = styled.div`
 const CenteredDiv = styled.div`
     display: flex;
     align-items: center;
+    font-size: 22px;
+    font-family: Roboto;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+
     h1{
-        font-size: 22px;
+        margin-top: 2px;
     }
     img{
         margin:0px 10px;

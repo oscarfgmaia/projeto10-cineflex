@@ -49,8 +49,6 @@ export default function SeatScreen() {
         return <h1>AGUARDANDO return</h1>
     }
 
-console.log(form)
-
     return (
         <CenteredDiv>
             <ScreenTitle>

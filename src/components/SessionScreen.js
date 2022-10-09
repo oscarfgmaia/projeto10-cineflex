@@ -18,7 +18,7 @@ export default function SessionScreen() {
         })
 
         promise.catch((err) => {
-            console.log(err)
+            alert(err.response.data)
         })
     }, [id])
 

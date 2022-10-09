@@ -4,6 +4,7 @@ import Header from "./Header";
 import HomeScreen from "./HomeScreen";
 import SeatScreen from "./SeatScreen";
 import SessionScreen from "./SessionScreen";
+import SucessScreen from "./SuccessScreen";
 
 export default function App() {
     return (
@@ -15,7 +16,7 @@ export default function App() {
                     <Route path="/" element={<HomeScreen />} />
                     <Route path="/sessoes/:id" element={<SessionScreen />} />
                     <Route path="/assentos/:id" element={<SeatScreen />} />
-                    <Route path="/sucesso" />
+                    <Route path="/sucesso" element={<SucessScreen />} />
                 </Routes>
             </BrowserRouter>
 

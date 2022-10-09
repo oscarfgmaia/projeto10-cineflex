@@ -38,7 +38,7 @@ export default function SeatScreen() {
 
         promise.then(res=>{
             console.log(res.data)
-            navigate("/")
+            navigate("/sucesso",{state:{form,selectedSeats,movie}})
         })
         promise.catch(err=>{
             alert(err.response.data)
@@ -132,7 +132,7 @@ const CenteredDiv = styled.div`
     }
 `
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
     margin-top: 30px;
     box-sizing: border-box;
     background-color: #E8833A;

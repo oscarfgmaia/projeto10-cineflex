@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export default function ScreenTitle(props) {
+    const green = props.color;
     return (
-        <StyledTitle>
+        <StyledTitle color={green}>
             <h1>
                 {props.children}
             </h1>
@@ -19,14 +20,14 @@ const StyledTitle = styled.div`
     h1{
         font-family: 'Roboto';
         font-style: normal;
-        font-weight: 400;
+        font-weight: ${props=>props.color?'bold':400};
         font-size: 24px;
         line-height: 28px;
         display: flex;
         align-items: center;
         text-align: center;
         letter-spacing: 0.04em;
-        color: #293845;
+        color: ${props=>props.color};
     }
 
 `

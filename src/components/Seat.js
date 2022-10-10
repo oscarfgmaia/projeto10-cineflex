@@ -18,6 +18,9 @@ export default function Seat({ id, name, isAvailable, selectedSeats, setSelected
             setSelectedSeats(newArr)
             return
         }
+        else{
+            alert("Esse assento não está disponível")
+        }
     }
 
     return (

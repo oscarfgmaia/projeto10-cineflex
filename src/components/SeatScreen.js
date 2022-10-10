@@ -13,12 +13,13 @@ export default function SeatScreen() {
         seats: [],
         movie: { posterURL: '', title: '' },
     })
-    const [form, setForm] = useState({name:'',cpf:''})
+    const [form, setForm] = useState({ name: '', cpf: '' })
     const [selectedSeats, setSelectedSeats] = useState([])
 
-    function handleChange(e){
-        setForm({...form,[e.target.name]: e.target.value})
+    function handleChange(e) {
+        setForm({ ...form, [e.target.name]: e.target.value })
     }
+
     useEffect(() => {
         const URL = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`;
         const promise = axios.get(URL);
@@ -32,17 +33,29 @@ export default function SeatScreen() {
 
     function onSubmit(e) {
         e.preventDefault()
-        const body = {ids:selectedSeats,...form}
-        const URL = "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many"
-        const promise = axios.post(URL,body)
-
-        promise.then(res=>{
-            console.log(res.data)
-            navigate("/sucesso",{state:{form,selectedSeats,movie}})
-        })
-        promise.catch(err=>{
-            alert(err.response.data)
-        })
+        if (selectedSeats.length === 0) {
+            alert("Você deve selecionar algum assento!")
+            return;
+        }
+        if(form.name.length < 3){
+            alert("DIGITE UM NOME VÁLIDO")
+            return
+        }
+        if(form.cpf.length !== 11){
+            alert("CPF INVÁLIDO!")
+            return
+        }
+        else {
+            const body = { ids: selectedSeats, ...form }
+            const URL = "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many"
+            const promise = axios.post(URL, body)
+            promise.then(res => {
+                navigate("/sucesso", { state: { form, selectedSeats, movie } })
+            })
+            promise.catch(err => {
+                alert(err.response.data)
+            })
+        }
     }
 
     if (movie.seats.length === 0) {

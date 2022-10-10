@@ -9,6 +9,15 @@ export default function SucessScreen() {
     const { form, selectedSeats, movie } = state;
     let seatsName = []
 
+    function formataCPF(cpf) {
+        //retira os caracteres indesejados...
+        cpf = cpf.replace(/[^\d]/g, "");
+
+        //realizar a formatação...
+        return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    }
+    let formatedCpf = formataCPF(form.cpf)
+
     for (let i = 0; i < movie.seats.length; i++) {
         selectedSeats.filter((s) => {
             if (s === movie.seats[i].id) {
@@ -21,7 +30,7 @@ export default function SucessScreen() {
 
     return (
         <CenteredDiv>
-            <ScreenTitle>
+            <ScreenTitle color={'#247A6B'}>
                 Pedido feito com sucesso!
             </ScreenTitle>
             <StyledMargin />
@@ -51,7 +60,7 @@ export default function SucessScreen() {
                     Nome: {form.name}
                 </h2>
                 <h2>
-                    CPF: {form.cpf}
+                    CPF: {formatedCpf}
                 </h2>
             </StyledShowForm>
             <Link to={"/"}>
